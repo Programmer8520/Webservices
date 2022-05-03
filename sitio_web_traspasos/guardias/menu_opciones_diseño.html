@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilos/estilo_menu_opciones.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <title>Menú de Opciones</title>
+</head>
+<body>
+    
+    <div class="container">
+        <br>
+        
+        <div class="panel-group">
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <a data-toggle="collapse" href="#expand">Menú de Opciones</a>
+              </h4>
+            </div>
+          </div>
+          
+            <div id="expand" class="panel-collapse collapse">
+
+              <div class="panel-footer"><a data-toggle="collapse" href="#expand_salida">Traspasos De Salida</a></div>
+                <div id="expand_salida" class="panel-collapse collapse">
+                    <div class="panel-body"><a href="menu_opciones_1/?opcion=1">Inicar Traspaso</a></div>
+                    <div class="panel-body"><a href="menu_opciones_1/?opcion=2">Recuperar Traspaso</a></div>
+                </div>
+
+              <div class="panel-footer"><a data-toggle="collapse" href="#expand_entrada">Traspasos De Entrada</a></div>
+                <div id="expand_entrada" class="panel-collapse collapse">
+                    <div class="panel-body">Escanear Traspaso</div>
+                    <div class="panel-body">Documentos por Cerrar</div>
+                </div>
+
+              <div class="panel-footer"><a data-toggle="collapse" href="#expand_inter">Seguimiento de Informacion</a></div>
+                <div id="expand_inter" class="panel-collapse collapse">
+                    <div class="panel-body">Consultar Datos</div>
+                </div>
+            </div>
+        </div>
+
+        
+
+        
+        
+
+              
+        
+      </div>
+
+            <!--Botones de configuracion
+                
+                Menu de configuracion donde se seleccionara lo que se puede visualizar y lo que no.
+            
+            -->
+            
+
+        </div>
+    </div>
+
+    <form action="menu_opciones.php" method="POST">
+
+    </form>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+StockTransfer oTransferReq = oCompany . GetBusinessObject ( SAPbobsCOM . BoObjectTypes . OInventoryTransferRequest ); if ( oTransferReq . GetByKey ( 1 )) // Cargar una solicitud de transferencia { // inicializar una transferencia de acciones 
+    StockTransfer oStTransfer = oCompany . GetBusinessObject ( SAPbobsCOM . BoObjectTypes . OStockTransfer ); 
+    oStTransfer
+   
+
+    . DocDate = DateTime . Ahora ;
+
+
+    // Leer líneas de Solicitud de transferencia para ( int i = 0 ; i < oTransferReq . Lines.Count ; i ++) { 
+        oTransferReq . Líneas. SetCurrentLine ( i );    
+         
+    
+
+
+        if ( oStTransfer . Lines. BaseEntry ! = 0 ) 
+            oStTransfer . Lines.Add ();  
+
+
+        // Establecer la referencia de la transferencia de la solicitud, la savia se copie las otras informaciones de forma automática . 
+        oStTransfer . Líneas. BaseEntry = oTransferReq . DocEntry ; 
+        oStTransfer . Líneas. BaseLine = oTransferReq . Líneas. LineNum ; 
+        oStTransfer . Líneas. BaseType = InvBaseDocTypeEnum . InventoryTransferRequest ;   
+    }
+
+
+    si ( oStTransfer . Añadir () ! = 0 ) 
+        de mensaje . Show ( oCompany . GetLastErrorDescription ()); } 
+
+
+####################################################################################
+
+Codigo para la solicitud de traspaso de SAP
+oDoc = oCompany.GetBusinessObject(SAPbobsCOM.BoObjectType s.oInventoryTransferRequest);
+oDoc.DocObjectCode = SAPbobsCOM.BoObjectTypes.oInventoryTransferRequest ;
+oDoc.FromWarehouse = "01";
+oDoc.ToWarehouse = "02";
+oDoc.Lines.ItemCode = "BAR00007";
+oDoc.Lines.Quantity = 1;
+oDoc.Add();
