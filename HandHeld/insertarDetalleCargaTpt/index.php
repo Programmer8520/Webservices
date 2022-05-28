@@ -5,7 +5,7 @@ $paramNumeroLinea=$_POST["paramNumeroLinea"];
 $paramCodigoEANUPC=$_POST["paramCodigoEANUPC"];
 $paramClave=$_POST["paramClave"];
 $paramCantidad=$_POST["paramCantidad"];
-$paramFechaCarga=$_POST["paramFechaCarga"];
+$paramFechaCarga=obtenerFecha($conexion);
 $paramIdProduccion=$_POST["paramIdProduccion"];
 $paramNoTarima=$_POST["paramNoTarima"];
 $paramFechaProduccion=$_POST["paramFechaProduccion"];
@@ -47,10 +47,18 @@ $paramUUID=$_POST["paramUUID"];
              )";
 
     if(mysqli_query($conexion, $query)){
-        //echo "OK";
+        $query2 = "select last_insert_id() as id";
+        $obtenerIdInsertado = mysqli_query($conexion, $query2);
+
+        if(mysqli_num_rows($obtenerIdInsertado)>0)
+        {
+            $fila = mysqli_fetch_assoc($obtenerIdInsertado);
+
+            echo $fila["id"];
+        }
     }
     else{
-        echo "ERROR DE WEB SERVICE";
+        //echo "ERROR DE WEB SERVICE";
     }
 
     $conexion->close();  

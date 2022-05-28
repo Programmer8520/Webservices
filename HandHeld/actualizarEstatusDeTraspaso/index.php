@@ -17,7 +17,7 @@ $update = mysqli_query($conexion, $sql);
 if (mysqli_affected_rows($conexion) > 0){
     //echo "OK";
 }else{
-    echo "Error papi, echale mas ganas\n";
+    //echo "Error papi, echale mas ganas\n";
     echo mysqli_error($conexion)."[".mysqli_errno($conexion)."]";
 }
 

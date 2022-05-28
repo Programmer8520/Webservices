@@ -7,15 +7,15 @@ $fecha = substr(obtenerFecha($conexion), 0, -9);
 //echo  $fecha;
 
 $sql = "SELECT 
-            cabecero_carga_tpt_id,
-            uuid_cabecero_carga_tpt
-        FROM 
-            tb_cabecero_carga_tpt
-        WHERE
-            llegada_transportista LIKE '%".$fecha."%'
-            AND numero_documento = '-'
-            AND id_estatus = 200
-            ORDER BY cabecero_carga_tpt_id DESC";
+cabecero_carga_tpt_id,
+uuid_cabecero_carga_tpt
+FROM 
+tb_cabecero_carga_tpt
+WHERE
+llegada_transportista LIKE '%".$fecha."%'
+AND numero_documento = '-'
+AND id_estatus = 200
+ORDER BY cabecero_carga_tpt_id DESC";
 
 if ($consulta = mysqli_query($conexion, $sql)) {
     if (mysqli_num_rows($consulta) > 0) {

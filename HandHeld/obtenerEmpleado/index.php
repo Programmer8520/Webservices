@@ -32,7 +32,7 @@ function obetnerDatos($vResultado){
 
     while ($fila = mysqli_fetch_assoc($vResultado)) {
 
-        $arr[$i]["nombre"] = utf8_encode($fila["nombre"]);
+        $arr[$i]["nombre"] = utf8_encode($fila["nombre_empleado"])." ".utf8_encode($fila["apellido_paterno"])." ".utf8_encode($fila["apellido_materno"]);
 
         $i++;
     }

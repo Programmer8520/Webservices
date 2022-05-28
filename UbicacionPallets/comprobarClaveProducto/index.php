@@ -5,29 +5,29 @@ include '../../conexiones/conexion_sipisa.php';
 
 $clave_producto = $_GET["paramClaveProducto"];
 $almacen = $_GET["paramClaveAlmacen"];
-$rack = $_GET["paramClaveRack"];
-
+$posicion = $_GET["posicion"];
+$arr = explode("-", $posicion);
 
 $query = "  SELECT DISTINCT
                 clave_almacen, clave_rack, clave_producto, clave_producto1, clave_producto2, clave_producto3 
             FROM
                 tb_ubicaciones_pallets_2021
             WHERE
-                clave_almacen = ".$almacen." AND clave_rack = '".$rack."' AND
+                clave_almacen = '".$almacen."' AND clave_rack = '".$arr[0]."' AND
                 (clave_producto = '".$clave_producto."'
                     OR clave_producto1 = '".$clave_producto."'
                         OR clave_producto2 = '".$clave_producto."'
                             OR clave_producto3 = '".$clave_producto."')";
 
-$consulta = $conexion->query($query);
+$consulta = mysqli_query($conexion, $query);
 
-if ($consulta->num_rows>0){
+if (mysqli_num_rows($consulta)>0){
 
     //echo "Posicion correcta";
 
 }else{
 
-    echo "Ese rack no corresponde";;
+    echo "Ese rack no corresponde";
 
 }
 

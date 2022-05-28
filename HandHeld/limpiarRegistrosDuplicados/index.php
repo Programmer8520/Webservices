@@ -16,7 +16,8 @@ if (mysqli_num_rows($consultarTarimasDeTraspaso) > 0 ){
     $i = 0;
     while ($fila = mysqli_fetch_array($consultarTarimasDeTraspaso)){
         $consultarVecesQueSeRepite = "SELECT 
-                                        id, clave, COUNT(*) AS cantidad
+                                        id, 
+                                        clave, COUNT(*) AS cantidad
                                       FROM
                                           tb_detalle_carga_tpt
                                       WHERE
@@ -31,10 +32,22 @@ if (mysqli_num_rows($consultarTarimasDeTraspaso) > 0 ){
                     //debemos eliminar eliminar el registro con el ID que obtvimos en esa consulta
                     mysqli_query($conexion, "DELETE FROM tb_detalle_carga_tpt WHERE id =".$fil[0]);
                     echo "Tarima Eliminada, con el ID:".$fil[0]." Clave de producto:".$fil[1]."\n";
+                }else{
+
+                    //echo "No se elmino nada mi chavo";
+
                 }
             }
+        }else {
+
+            //echo "no hay datos con la informacion proporcionada";
+
         }
     }
+}else{
+
+    //echo "no hay ni tarimas mi chavo";
+
 }
 
 ?>

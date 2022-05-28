@@ -18,7 +18,7 @@ if(mysqli_num_rows($consulta) > 0){
         $arr[$i]["analista"] = $fila["numero_analista_inventarios"];
         $arr[$i]["guardia"] = $fila["numero_guardia_seguridad"];
         $arr[$i]["montacarguista"] = $fila["numero_montacarguista"];
-        $i++;
+        
     }
     echo json_encode($arr);
 }else{

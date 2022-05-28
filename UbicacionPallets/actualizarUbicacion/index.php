@@ -16,9 +16,12 @@ $conexion = conectar();
 
 $mod = $_POST["mod"];
 $clave_almacen = $_POST["paramClaveAlmacen"];
-$clave_rack = $_POST["paramClaveRack"];
-$posicion  = intval($_POST["paramPosicion"]);
-$nivel = $_POST["paramNivel"];
+$pos_escan = $_POST["posicion"];
+$arr = explode("-", $pos_escan);
+$clave_rack = $arr[0];
+$posicion = $arr[1];
+$nivel = $arr[2];
+
 $clave_etiqueta = $_POST["paramClaveEtiqueta"];
 //$clave_producto = $_POST["paramClaveProducto"];
 $login  = strtoupper($_POST["paramLogin"]);
@@ -117,8 +120,7 @@ function estaTarimaEnPosicion($v_clave_almacen, $v_clave_rack, $v_posicion, $v_n
         AND clave_rack = '" . $v_clave_rack . "'
         AND posicion = '" . $v_posicion . "'
         AND nivel <> '" . $v_nivel . "'
-        AND clave_etiqueta='" . $v_clave_etiqueta . "'
-        ";
+        AND clave_etiqueta='" . $v_clave_etiqueta . "'";
 
     } elseif ($type == 1) {
         $query = "
@@ -257,6 +259,8 @@ function surtirTarima($param_login, $v_clave_almacen, $v_clave_rack, $v_posicion
     if (!$conexion->prepare($query)->execute()) {
 
         echo "error para surtir la tarima:\n" . mysqli_errno($conexion) . "descripcion:\n" . mysqli_error($conexion);
+    }else {
+        //echo "Se ha colocado la tarima es su correcta posicion";
     }
 }
 

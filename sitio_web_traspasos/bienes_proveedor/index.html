@@ -1,0 +1,116 @@
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Bienes</title>
+    <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css' rel='stylesheet'>
+    <link href='https://use.fontawesome.com/releases/v5.7.2/css/all.css' rel='stylesheet'>
+    <link rel="stylesheet" href="estilos/es_index.css">    
+    <script>
+
+    function validarCredenciales() {
+
+        userName = document.getElementById("userName").value;
+        openSesame = document.getElementById("pwd").value
+        var parametros = 
+        {
+            "userName" : userName,
+            "password" : openSesame
+        }
+
+        $.ajax({
+            data : parametros,
+            dataType : 'JSON',
+            url : 'validacion/',
+            type : 'POST',
+            beforeSend : function () {
+                console.log("antes de enviar");
+            },
+            error : function () {
+                console.log("error, verifique el comando de conexion");
+            },
+            complete : function () {
+                console.log("comprobacion completada");
+            },
+            success : function (valores) {
+                //console.log(valores);
+            
+                //alert("redirigiendo a pagina de menu " + valores.email);
+
+                if (valores.validado == "SI"){
+                    var direccion = "menu/?mail="+valores.email+"&name="+valores.empleado+"&dep="+valores.dep;
+                    location.href = direccion;
+
+                    console.log("comprobar validacion");
+                }else {
+
+                    console.log("refrescar inputs");
+
+                }
+
+                
+                //$("#co").html(valores);
+            
+            }
+        });
+    }
+    </script>
+</head>
+<body oncontextmenu='false' class='snippet-body'>
+    <div class="wrapper">
+        <div class="logo"> <img src="resources/logo.png"> </div>
+        <div class="text-center mt-4 name">BIENES DE<BR>PROVEEDOR</div>
+        
+            <form class="p-3 mt-3" action="validacion/" method="POST">
+            <div class="form-field d-flex align-items-center"> 
+                <span class="far fa-user"></span> 
+                <input type="text" name="userName" id="userName" placeholder="Numero   Empleado"> 
+            </div>
+            <div class="form-field d-flex align-items-center"> 
+                <span class="fas fa-key"></span> 
+                <input type="password" name="password" id="pwd" placeholder="Contraseña"> 
+            </div> 
+            <button type="submit" class="btn mt-3" id="btn_login" onclick="validarCredenciales();">Login</button>   
+    </div>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js'></script>
+</body>
+</html>-->
+
+
+
+<html>
+    <body>
+    <h1>¡Se generó cita correctamente!</h1>
+    <h3>". JAVIER ."</h3>
+    <p>
+    El motivo de este correo es para confirmarle que la cita que tendrá con <b>". $visita_a ."</b>
+    ahora esta programada para el día <b>". {fecha_inicio} ."</b> en la sala <b>". $sala ."</b>
+    ubicada en: <b>Bodega 8</b> y la dirección es <b>KM 31.5 Carretera México-Cuautitlán Colonia
+    Conjunto industrial Cuautitlán Edo. de México CP. 54800</b>. La cita esta programada a las
+    <b>2022-05-06</b> hrs.. Le pedimos presentarse con el siguiente folio #<b>". LJSDNF541851 ."</b>.
+    </p>
+    ". $str_table ."
+    <br />
+    <b><u><font color='red'>Nota importante</font></u></b>
+    <ul>
+        <li>
+        Si usted trae consigo equipo de cómputo portátil o accesorios, le solicitamos presentarse 15 minutos
+        antes de la cita, para que su equipo sea registrado y evite atrasos en su reunión.
+        </li>
+        <li>
+        Si tiene una presentación, favor de traer equipo portátil, ya que en la sala de proveedores no contamos con equipo de cómputo.
+        </li>
+        <li>
+        Cabe mencionar que la hora inicial de la cita (<b> 2022-05-05 </b> hrs.) refiere al tiempo
+        en el que usted(es) debe(n) de estar en la sala.
+        </li>
+        <li>
+        Aclaraciones o dudas, comunicarse al teléfono <b>(55)9171-7100</b>.
+        </li>
+    </ul>
+    </body>
+    </html>

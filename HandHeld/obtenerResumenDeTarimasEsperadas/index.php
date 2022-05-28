@@ -11,7 +11,7 @@ if (mysqli_num_rows($consulta) > 0){
     $arr = array();
     $i = 0;
     while ($fila = mysqli_fetch_array($consulta)){
-        $cantidades = "SELECT count(*) as cantidad FROM tb_detalle_carga_tpt WHERE nombre_producto LIKE '%".$fila[0]."%' AND uuid_cabecero_carga_tpt = '".$uuid. "'";
+        $cantidades = "SELECT count(*) as cantidad FROM tb_detalle_carga_tpt WHERE nombre_producto LIKE '%".$fila[0]."%' AND uuid_cabecero_carga_tpt = '".$uuid."'";
         $arr[$i]["nombre_producto"] = utf8_encode($fila[0]);
         $consultar = mysqli_query($conexion, $cantidades);
         if (mysqli_num_rows($consultar) > 0){

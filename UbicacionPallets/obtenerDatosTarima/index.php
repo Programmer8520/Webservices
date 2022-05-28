@@ -7,7 +7,6 @@ $idEtiqueta = $_GET["idEtiqueta"];
 $query = "SELECT 
             DISTINCT
                 ubi.clave_almacen, 
-            
                 hdr.nombre_producto,
                 hdr.clave
             FROM 
@@ -24,19 +23,15 @@ $query = "SELECT
 
 $consulta = $conexion->query($query);
 
-if ($consulta -> num_rows>0){
-
+if ($consulta -> num_rows>0)
+{
     echo json_encode(obtenerDatos($consulta));
-    //obtenerDatos($consulta);
-
-}else{
-
-    $arr = array();
-
-    echo json_encode($arr);
-
 }
-
+else
+{
+    $arr = array();
+    echo json_encode($arr);
+}
 
 function obtenerDatos($vResultado){
     
@@ -48,11 +43,6 @@ function obtenerDatos($vResultado){
         $arr[$i]["nombre_producto"] = utf8_encode($fila["nombre_producto"]);
         $arr[$i]["clave"] = $fila["clave"];
         $arr[$i]["clave_almacen"] = $fila["clave_almacen"];
-
-        //echo $fila["nombre_producto"]. "<br>";
-        //echo $fila["clave"]. "<br>";
-        //echo $fila["clave_almacen"]. "<br>";
-		
     
         $i++;
     }

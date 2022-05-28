@@ -45,7 +45,6 @@ if ($consulta->num_rows!=0){
 
 }*/
 
-
 $query = "  UPDATE 
                     tb_ubicaciones_pallets_2021 
                 SET 

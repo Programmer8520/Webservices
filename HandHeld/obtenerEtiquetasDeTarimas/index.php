@@ -9,13 +9,20 @@ include '../../conexiones/conexion_sipisa.php';
 $uuid = $_GET["uuid"];
 $solicitud_traspaso = $_GET["solicitud"];
 
-$parametros="SELECT 
+/*$parametros="SELECT 
                 id_produccion, no_tarima 
               FROM 
                 tb_detalle_carga_tpt 
               WHERE 
               numero_documento = ".$solicitud_traspaso." 
-              AND uuid_cabecero_carga_tpt = '".$uuid."'";
+              AND uuid_cabecero_carga_tpt = '".$uuid."'";*/
+
+              $parametros="SELECT 
+              id_produccion, no_tarima 
+            FROM 
+              tb_detalle_carga_tpt 
+            WHERE 
+            uuid_cabecero_carga_tpt = '".$uuid."'";
 
 $resultado = mysqli_query($conexion, $parametros);
 

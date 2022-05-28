@@ -1,6 +1,6 @@
 <?php
-include '../../conexiones/conexion_sipisa.php';
 
+include '../../../conexion_sipisa.php';
 
 $paramUUID=$_POST["paramUUID"];
 $paramBodegaOrigen=$_POST["paramBodegaOrigen"];
@@ -20,15 +20,15 @@ $paramConductor=$_POST["paramConductor"];
 $paramPlacasTractor=$_POST["paramPlacasTractor"];
 $paramPlacasRemolque=$_POST["paramPlacasRemolque"];
 $paramSellos=$_POST["paramSellos"];
-$paramLlegadaTransportista=$_POST["paramLlegadaTransportista"];
-$paramEntradaRampa=$_POST["paramEntradaRampa"];
-$paramSalidaRampa=$_POST["paramSalidaRampa"];
-$paramNumeroDocumento=$_POST["paramNumeroDocumento"];
+$paramLlegadaTransportista=obtenerFecha($conexion);
+$paramEntradaRampa=obtenerFecha($conexion);
+$paramSalidaRampa=obtenerFecha($conexion);
+$paramNumeroDocumento="-";
 $paramCorreoUsuarioAplicacion=$_POST["paramCorreoUsuarioAplicacion"];
 $paramIdStatus = $_POST["paramIdStatus"];
-$paramObservaciones = $_POST["paramObservaciones"];
-$paramClaveCargaOriginal = intval($_POST["paramClaveCargaOriginal"]);
-$paramNaveCargaOriginal = $_POST["paramNaveCargaOriginal"];
+$paramObservaciones = "";
+$paramClaveCargaOriginal = intval("1");
+$paramNaveCargaOriginal = "NAVE 8";
 
 $paramNumeroMontacarguista=verificarNumero($paramNumeroMontacarguista,$conexion);
 $paramNumeroAnalistaInventarios=verificarNumero($paramNumeroAnalistaInventarios,$conexion);
@@ -105,10 +105,13 @@ if(mysqli_query($conexion, $query))
 
     if($consulta->num_rows>0){
 
-        $fila = $consulta->fetch_assoc();
-        echo $fila["id"];
-
+        while ($fila = mysqli_fetch_assoc($consulta)){
+            $arr["id"] = $fila["id"];
+        }
+        echo json_encode($arr);
     }
+
+
 }
 else{
     //echo "ERROR DE WEB SERVICE";

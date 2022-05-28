@@ -13,6 +13,7 @@ if ($consulta = mysqli_query($conexion, $query)) {
         while ($fila = mysqli_fetch_assoc($consulta)){
             $arr[$i]["tractor"] = $fila["placas_tractor"];
             $arr[$i]["remolque"] = $fila["placas_remolque"];
+            
             $i++;
         }
     
@@ -23,7 +24,10 @@ if ($consulta = mysqli_query($conexion, $query)) {
         echo "No hay datos para mostrar";
     
     }
-}
+}else {
 
+    echo "La consulta no pudo ser ejecutada";
+
+}
 
 ?>
